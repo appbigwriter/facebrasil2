@@ -159,9 +159,14 @@ const Navbar: React.FC = () => {
             </button>
 
             <SignedOut>
-              <Link href="/login" className="bg-primary hover:bg-primary-dark text-white px-3 lg:px-6 py-1.5 lg:py-2 rounded-full font-bold transition-all shadow-lg hover:shadow-primary/20 text-xs lg:text-sm">
-                Entrar
-              </Link>
+              <div className="flex items-center gap-2 lg:gap-4">
+                <Link href="/login" className="dark:text-slate-300 text-gray-700 hover:text-primary transition-colors text-xs lg:text-sm font-bold">
+                  Entrar
+                </Link>
+                <Link href="/login?mode=signup" className="bg-primary hover:bg-primary-dark text-white px-3 lg:px-6 py-1.5 lg:py-2 rounded-full font-bold transition-all shadow-lg hover:shadow-primary/20 text-xs lg:text-sm">
+                  Cadastrar
+                </Link>
+              </div>
             </SignedOut>
 
             <SignedIn>

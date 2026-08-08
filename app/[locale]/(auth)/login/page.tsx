@@ -45,6 +45,12 @@ export default function LoginPage() {
     const locale = (params?.locale as string) || 'pt';
     const supabase = createClient();
 
+    React.useEffect(() => {
+        if (searchParams.get('mode') === 'signup') {
+            setMode('signup');
+        }
+    }, [searchParams]);
+
     const handleResendConfirmation = async () => {
         setResendLoading(true);
         try {
