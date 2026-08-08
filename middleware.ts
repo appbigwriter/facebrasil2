@@ -9,7 +9,7 @@ export async function middleware(request: NextRequest) {
     const path = request.nextUrl.pathname
 
     // Skip auth for static assets and API routes that don't need session refresh
-    const staticApps = ['arva', 'facebrasilshop', 'facebrasiltv', 'fbrnews', 'novafacebrasil']
+    const staticApps = ['arva', 'facebrasilshop', 'facebrasiltv', 'fbrnews', 'novafacebrasil', 'tina']
     const pathParts = path.split('/').filter(Boolean)
     const firstPart = pathParts[0]
     const isLocale = ['pt', 'en', 'es'].includes(firstPart)
