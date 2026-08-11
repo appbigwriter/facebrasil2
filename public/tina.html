@@ -3,108 +3,84 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tina — Assistente de Oficial de Justiça</title>
+<title>Tina — Assistente de Oficial de Justiça · v3</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#EFEBDF;
-    --paper-2:#F7F4EC;
-    --white:#FCFBF7;
-    --ink:#14213D;
-    --ink-soft:#2B3C5D;
-    --gold:#9A7A2E;
-    --gold-bright:#C6A24A;
-    --forest:#2E5A44;
-    --text:#23262E;
-    --muted:#726A58;
-    --line:rgba(20,33,61,0.15);
-    --line-soft:rgba(20,33,61,0.08);
+    --paper:#EFEBDF;--paper-2:#F7F4EC;--white:#FCFBF7;
+    --ink:#14213D;--ink-soft:#2B3C5D;--gold:#9A7A2E;--gold-bright:#C6A24A;
+    --forest:#2E5A44;--text:#23262E;--muted:#726A58;
+    --line:rgba(20,33,61,0.15);--line-soft:rgba(20,33,61,0.08);
+    --red:#C0392B;--orange:#E67E22;--yellow:#F1C40F;
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    margin:0;background:var(--paper);color:var(--text);
-    font-family:'Spectral',Georgia,serif;font-size:18px;line-height:1.7;
-    -webkit-font-smoothing:antialiased;
-  }
-  .wrap{max-width:960px;margin:0 auto;padding:0 28px}
-  .eyebrow{
-    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.18em;
-    text-transform:uppercase;color:var(--gold);font-weight:500;
-  }
+  body{margin:0;background:var(--paper);color:var(--text);
+    font-family:'Spectral',serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:0 28px}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;
+    text-transform:uppercase;color:var(--gold);font-weight:500}
   h1,h2,h3{font-family:'Archivo',sans-serif;font-weight:600;color:var(--ink);line-height:1.12;margin:0}
-  h2{font-size:34px;letter-spacing:-0.01em}
-  h3{font-size:20px;font-weight:600}
-  p{margin:0 0 18px}
+  h2{font-size:28px;margin-top:8px}
+  h3{font-size:20px;margin-bottom:8px}
+  p{margin:0 0 14px}
   a{color:var(--ink-soft)}
+  strong{color:var(--ink);font-weight:600}
 
-  /* ---------- HERO ---------- */
+  /* HERO */
   .hero{position:relative;overflow:hidden;background:var(--ink);color:var(--paper-2);padding:88px 0 72px}
   .hero .seal{position:absolute;right:-120px;top:-60px;width:520px;height:520px;opacity:0.10;color:var(--gold-bright)}
-  .hero .wrap{position:relative;z-index:2}
   .hero .eyebrow{color:var(--gold-bright)}
   .hero h1{
     font-family:'Archivo',sans-serif;font-weight:700;color:var(--white);
-    font-size:104px;letter-spacing:-0.03em;margin:14px 0 4px;line-height:0.9;
+    font-size:54px;line-height:1.04;margin:14px 0 10px;letter-spacing:-0.01em
   }
   .hero .role{font-family:'Archivo',sans-serif;font-weight:500;font-size:22px;color:var(--gold-bright);letter-spacing:0.01em}
-  .hero .thesis{font-size:21px;line-height:1.6;color:#DDE0EA;max-width:640px;margin-top:26px}
+  .hero .thesis{font-family:'Spectral',serif;font-style:italic;font-size:20px;color:#C9CEDB;margin-top:28px;max-width:600px;line-height:1.5}
   .hero .thesis em{color:var(--white);font-style:italic}
-
-  .credential{
-    margin-top:40px;max-width:520px;background:rgba(252,251,247,0.05);
-    border:1px solid rgba(198,162,74,0.4);border-radius:12px;padding:22px 24px;
-    display:flex;gap:20px;align-items:flex-start;
-  }
-  .credential .cid{
-    font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold-bright);
-    letter-spacing:0.06em;border:1px solid rgba(198,162,74,0.4);border-radius:6px;
-    padding:8px 10px;white-space:nowrap;line-height:1.6;
-  }
-  .credential .cbody{font-size:15px;line-height:1.55;color:#CDD2DE}
+  .credential{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;margin-top:36px;border:1px solid rgba(255,255,255,0.12);border-radius:14px;overflow:hidden}
+  .credential .c{padding:18px 22px;border-right:1px solid rgba(255,255,255,0.08)}
+  .credential .c:last-child{border-right:none}
+  .credential .clab{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold-bright);
+    letter-spacing:0.08em;text-transform:uppercase}
   .credential .cbody strong{color:var(--white);font-family:'Archivo',sans-serif;font-weight:600}
 
-  /* ---------- SECTIONS ---------- */
+  /* SECTIONS */
   section{padding:64px 0;border-bottom:1px solid var(--line-soft)}
-  .lede{font-size:20px;line-height:1.65;max-width:720px;color:#33363F;margin-top:20px}
-  .sechead{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+  .sechead{margin-bottom:8px}
   .sechead .num{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--gold);font-weight:500}
 
+  /* FIGURES */
   .figure{margin:36px 0 8px;background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:26px 22px}
-  .figure svg{width:100%;height:auto;display:block}
   .figcap{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:0.04em;margin-top:14px;text-align:center}
 
-  /* cards grid */
-  .grid{display:grid;gap:18px;margin-top:34px}
-  .grid.two{grid-template-columns:repeat(2,1fr)}
-  .grid.three{grid-template-columns:repeat(3,1fr)}
+  /* CARDS */
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:24px}
   .card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:22px 22px 20px;position:relative}
   .card .k{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);font-weight:500}
-  .card h3{margin:10px 0 8px}
-  .card p{font-size:16px;line-height:1.6;margin:0;color:#3A3D46}
+  .card h3{margin-top:6px}
+  .card p{font-size:15px;color:var(--text);margin-top:4px;line-height:1.55}
+  .card .check{position:absolute;top:18px;right:18px;color:var(--forest);font-size:14px;font-family:'Archivo',sans-serif;font-weight:700}
 
-  /* learn / steps list */
+  /* STEPS */
   .steps{margin-top:34px;border-top:1px solid var(--line)}
   .step{display:grid;grid-template-columns:44px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}
   .step .sn{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--gold);font-weight:500;padding-top:3px}
-  .step h3{margin-bottom:6px}
-  .step p{font-size:16px;color:#3A3D46;margin:0}
+  .step h3{font-size:18px;margin-bottom:4px}
+  .step p{font-size:15px;color:var(--text)}
 
-  /* table */
+  /* TABLES */
   .tablewrap{margin-top:34px;overflow-x:auto;border:1px solid var(--line);border-radius:12px}
   table{width:100%;border-collapse:collapse;background:var(--white);font-size:15px}
   th,td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--line-soft);vertical-align:top}
   th{font-family:'Archivo',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.02em;color:var(--ink);background:var(--paper-2)}
-  td .app{color:#3A3D46}
-  .cost{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;white-space:nowrap}
+  td strong{color:var(--ink)}
   .cost.free{color:var(--forest)}
   .cost.paid{color:var(--ink-soft)}
-  tr:last-child td{border-bottom:none}
 
-  /* cost highlight */
-  .costgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+  /* COST CELLS */
+  .costgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:24px}
   .costcell{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:22px}
   .costcell .lab{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);font-weight:500}
   .costcell .big{font-family:'Archivo',sans-serif;font-weight:700;font-size:28px;color:var(--ink);margin:8px 0 2px;line-height:1}
@@ -112,486 +88,606 @@
   .total{background:var(--ink);color:var(--paper-2);border-color:var(--ink)}
   .total .lab{color:var(--gold-bright)}
   .total .big{color:var(--white);font-size:30px}
-  .total .sub{color:#C6CBD8}
 
+  /* NOTES */
   .note{background:var(--paper-2);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:18px 22px;margin-top:26px;font-size:16px;line-height:1.6;color:#3A3D46}
   .note strong{color:var(--ink);font-family:'Archivo',sans-serif;font-weight:600}
 
-  .caveats{margin-top:30px}
+  /* RISK BADGES */
+  .riskbadge{display:inline-block;padding:3px 10px;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.06em}
+  .risk-red{background:rgba(192,57,43,0.12);color:var(--red);border:1px solid rgba(192,57,43,0.3)}
+  .risk-orange{background:rgba(230,126,34,0.12);color:var(--orange);border:1px solid rgba(230,126,34,0.3)}
+  .risk-yellow{background:rgba(241,196,15,0.12);color:#B7950B;border:1px solid rgba(241,196,15,0.3)}
+
+  /* CAVEATS */
   .caveat{display:grid;grid-template-columns:26px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line-soft)}
   .caveat .mk{color:var(--gold);font-family:'Archivo',sans-serif;font-weight:700}
-  .caveat p{margin:0;font-size:16px;color:#3A3D46}
+  .caveat p{margin:0;font-size:16px;color:var(--text)}
   .caveat strong{color:var(--ink);font-family:'Archivo',sans-serif;font-weight:600}
 
-  footer{background:var(--ink);color:#AEB5C6;padding:40px 0;font-size:14px}
-  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
-  footer .fmono{font-family:'IBM Plex Mono',monospace;letter-spacing:0.04em;font-size:12px}
+  /* UPS DIAGRAM */
+  .ups-spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:20px}
+  .ups-item{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:18px}
+  .ups-item .k{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold)}
+  .ups-item .v{font-family:'Archivo',sans-serif;font-weight:600;font-size:16px;color:var(--ink);margin-top:4px}
+  .ups-item .d{font-size:13px;color:var(--muted);margin-top:2px}
 
-  @media(max-width:720px){
-    body{font-size:17px}
-    .hero{padding:60px 0 48px}
-    .hero h1{font-size:68px}
-    h2{font-size:27px}
-    .grid.two,.grid.three,.costgrid{grid-template-columns:1fr}
-    .credential{flex-direction:column;gap:14px}
+  footer{background:var(--ink);color:#AEB5C6;padding:40px 0;font-size:14px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  footer .eyebrow{color:var(--gold-bright)}
+  footer p{margin:0;max-width:500px;color:#AEB5C6;font-size:13px}
+
+  @media(max-width:680px){
+    .hero h1{font-size:36px}
+    .hero .thesis{font-size:16px}
+    h2{font-size:22px}
+    .wrap{padding:0 20px}
+    .grid2{grid-template-columns:1fr}
+    .credential{grid-template-columns:1fr}
+    .credential .c{border-right:none;border-bottom:1px solid rgba(255,255,255,0.08)}
+    .ups-spec{grid-template-columns:1fr}
   }
-  @media(prefers-reduced-motion:no-preference){
-    .hero h1{animation:rise .7s ease both}
-    .hero .role{animation:rise .7s ease .08s both}
-    .hero .thesis{animation:rise .7s ease .16s both}
-    .hero .credential{animation:rise .7s ease .24s both}
-    @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-  }
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .hero .wrap > *{animation:fadeUp 0.6s ease-out both}
+  .hero .credential{animation-delay:0.3s}
 </style>
 </head>
 <body>
 
-<header class="hero">
-  <svg class="seal" viewBox="0 0 200 200" aria-hidden="true">
-    <g fill="none" stroke="currentColor" stroke-width="0.6">
-      <circle cx="100" cy="100" r="92"/><circle cx="100" cy="100" r="82"/><circle cx="100" cy="100" r="60"/>
-      <circle cx="100" cy="100" r="50"/>
-      <g>
-        <path d="M100 40 L104 96 L100 100 L96 96 Z"/>
-        <path d="M100 160 L104 104 L100 100 L96 104 Z"/>
-        <path d="M40 100 L96 104 L100 100 L96 96 Z"/>
-        <path d="M160 100 L104 96 L100 100 L104 104 Z"/>
-      </g>
-    </g>
-    <g stroke="currentColor" stroke-width="0.5">
-      <line x1="100" y1="10" x2="100" y2="26"/><line x1="100" y1="174" x2="100" y2="190"/>
-      <line x1="10" y1="100" x2="26" y2="100"/><line x1="174" y1="100" x2="190" y2="100"/>
-    </g>
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <svg class="seal" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="90" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <circle cx="100" cy="100" r="70" stroke="currentColor" stroke-width="1" fill="none"/>
+    <circle cx="100" cy="100" r="50" stroke="currentColor" stroke-width="0.8" fill="none"/>
+    <path d="M100 10 L100 190 M10 100 L190 100" stroke="currentColor" stroke-width="0.5"/>
+    <path d="M30 30 L170 170 M170 30 L30 170" stroke="currentColor" stroke-width="0.5"/>
   </svg>
   <div class="wrap">
-    <div class="eyebrow">Assistente de Oficial de Justiça Avaliador · TJRJ</div>
+    <div class="eyebrow">Projeto Tina · Versão 3.0 · Agosto 2026</div>
     <h1>Tina</h1>
-    <div class="role">Do gabinete ao cumprimento do mandado, sem largar o sigilo.</div>
-    <p class="thesis">Uma Oficial de Justiça Avaliadora carrega centenas de processos ao mesmo tempo — cada um com um pedido diferente do juízo, um prazo próprio e um endereço para encontrar. A Tina é a assistente que <em>lê, organiza, roteiriza e minuta</em>, deixando a Oficial livre para o que só ela pode fazer: ir a campo, executar o ato e dar fé pública ao que encontrou.</p>
-
+    <div class="role">Assistente Virtual da Oficial de Justiça</div>
+    <p class="thesis">Não é um chatbot. É a <em>parceira de campo</em> de Mariana — a que mapeia o perigo antes da saída, monta o roteiro, redige a minuta e fica de olho no tiroteio enquanto ela cumpre o mandado.</p>
     <div class="credential">
-      <div class="cid">TINA-002<br>ASSIST.OJA<br>RJ · v2</div>
-      <div class="cbody"><strong>Assistente digital dedicada.</strong> Roda em servidor local, na rede da Oficial, com a base de processos isolada da internet. Fala e escuta em português — por texto e por áudio. Desenhada sobre o escopo real do cargo de Analista Judiciário — especialidade Execução de Mandados (Lei Estadual 4.620/2005) — e seus limites: não decide, não certifica, não assina. Prepara o trabalho e devolve a palavra final a quem tem a fé pública.</div>
+      <div class="c">
+        <div class="clab">Criada por</div>
+        <div class="cbody"><strong>Sergio Castro</strong><br>Engenheiro de IA</div>
+      </div>
+      <div class="c">
+        <div class="clab">Plataforma</div>
+        <div class="cbody"><strong>Hermes Agent + Next.js</strong><br>Cérebro na nuvem · Cofre em casa</div>
+      </div>
+      <div class="c">
+        <div class="clab">Usuária</div>
+        <div class="cbody"><strong>Mariana Loureiro Campos</strong><br>Oficial de Justiça Avaliadora — TJRJ</div>
+      </div>
+      <div class="c">
+        <div class="clab">Área de atuação</div>
+        <div class="cbody"><strong>Campo Grande e Santa Cruz</strong><br>Zona Oeste — Rio de Janeiro</div>
+      </div>
     </div>
   </div>
-</header>
+</div>
 
-<section id="principio">
+<!-- ═══ 01 — Dois cérebros, uma muralha ═══ -->
+<section>
   <div class="wrap">
-    <div class="sechead"><span class="num">01</span><h2>Dois cérebros, uma muralha</h2></div>
-    <p class="lede">O segredo não está no chatbot — está na topologia. A Tina é dividida em duas camadas que nunca compartilham a mesma chave. Os dados sensíveis moram em casa e só saem quando é estritamente necessário, com o mínimo de informação possível.</p>
+    <div class="sechead">
+      <div class="num">01 · Arquitetura</div>
+      <h2>Dois cérebros, uma muralha</h2>
+    </div>
+    <p>A Tina opera em duas camadas fisicamente separadas, criadas por <strong>Sergio Castro</strong> (engenheiro de IA). A camada web combina a plataforma de agentes <strong>Hermes</strong> (o cérebro que conversa com a Mari) com aplicações <strong>Next.js</strong> que consomem dados públicos — mapas, endereços, notícias, APIs governamentais abertas. A camada local, em servidor próprio e fora da rede normal, guarda dados sensíveis e sigilosos — processos, partes, zonas de risco — acessível apenas a usuários autorizados.</p>
 
     <div class="figure">
-      <svg viewBox="0 0 680 500" role="img" aria-label="Arquitetura de duas camadas da Tina">
-        <defs>
-          <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-            <path d="M2 1L8 5L2 9" fill="none" stroke="#9A7A2E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-          </marker>
-        </defs>
-        <!-- Camada externa (VPS) -->
-        <rect x="30" y="30" width="620" height="150" rx="16" fill="#F7F4EC" stroke="#14213D" stroke-opacity="0.25" stroke-width="1"/>
-        <text x="50" y="58" font-family="'Archivo',sans-serif" font-size="14" font-weight="600" fill="#14213D">Camada externa · VPS — única exposta à internet</text>
-        <g font-family="'IBM Plex Mono',monospace" font-size="12">
-          <rect x="50" y="74" width="150" height="80" rx="10" fill="#14213D"/>
-          <text x="125" y="104" text-anchor="middle" fill="#FCFBF7" font-family="'Archivo',sans-serif" font-weight="600" font-size="14">Hermes</text>
-          <text x="125" y="124" text-anchor="middle" fill="#C6A24A">WhatsApp · voz</text>
-          <rect x="220" y="74" width="150" height="80" rx="10" fill="#2B3C5D"/>
-          <text x="295" y="104" text-anchor="middle" fill="#FCFBF7" font-family="'Archivo',sans-serif" font-weight="600" font-size="14">Fila / relay</text>
-          <text x="295" y="124" text-anchor="middle" fill="#C6A24A">só enfileira</text>
-          <rect x="390" y="74" width="220" height="80" rx="10" fill="#9A7A2E"/>
-          <text x="500" y="104" text-anchor="middle" fill="#FCFBF7" font-family="'Archivo',sans-serif" font-weight="600" font-size="14">Agente externo</text>
-          <text x="500" y="124" text-anchor="middle" fill="#F7F4EC">DataJud · CEP · rota</text>
-        </g>
-        <line x1="200" y1="114" x2="218" y2="114" stroke="#9A7A2E" stroke-width="1.4" marker-end="url(#ar)"/>
-        <line x1="370" y1="114" x2="388" y2="114" stroke="#9A7A2E" stroke-width="1.4" marker-end="url(#ar)"/>
-        <text x="340" y="200" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#726A58">sem credencial do banco de processos</text>
+      <svg viewBox="0 0 800 280" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <!-- VPS Cloud -->
+        <rect x="30" y="40" width="320" height="200" rx="14" fill="#F7F4EC" stroke="#9A7A2E" stroke-width="1.5"/>
+        <text x="190" y="68" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#9A7A2E" letter-spacing="1.5">CAMADA WEB — 100% ONLINE</text>
+        <rect x="60" y="85" width="120" height="40" rx="8" fill="#14213D"/>
+        <text x="120" y="102" text-anchor="middle" font-family="Archivo" font-size="12" fill="#FCFBF7" font-weight="600">Hermes Agent</text>
+        <text x="120" y="117" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#C6A24A">Cérebro · Voz · Chat</text>
+        <rect x="200" y="85" width="120" height="40" rx="8" fill="#14213D"/>
+        <text x="260" y="102" text-anchor="middle" font-family="Archivo" font-size="12" fill="#FCFBF7" font-weight="600">Next.js</text>
+        <text x="260" y="117" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#C6A24A">Dados públicos</text>
+        <rect x="60" y="140" width="120" height="40" rx="8" fill="#14213D"/>
+        <text x="120" y="157" text-anchor="middle" font-family="Archivo" font-size="12" fill="#FCFBF7" font-weight="600">Nitter</text>
+        <text x="120" y="172" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#C6A24A">Scraping do X</text>
+        <rect x="200" y="140" width="120" height="40" rx="8" fill="#14213D"/>
+        <text x="260" y="157" text-anchor="middle" font-family="Archivo" font-size="12" fill="#FCFBF7" font-weight="600">APIs públicas</text>
+        <text x="260" y="172" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#C6A24A">FogoCruzado · ViaCEP</text>
+        <text x="190" y="215" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#726A58">Dados públicos apenas · Sem credenciais do servidor local</text>
 
-        <!-- Túnel -->
-        <line x1="340" y1="215" x2="340" y2="270" stroke="#9A7A2E" stroke-width="1.6" marker-end="url(#ar)"/>
-        <text x="470" y="238" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#726A58">túnel de saída (WireGuard)</text>
-        <text x="470" y="254" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#726A58">iniciado pela rede local</text>
+        <!-- Tunnel -->
+        <path d="M350 140 Q400 100 450 140" fill="none" stroke="#9A7A2E" stroke-width="2" stroke-dasharray="6,4"/>
+        <text x="400" y="95" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#9A7A2E">Tailscale</text>
 
-        <!-- Camada local -->
-        <rect x="30" y="285" width="620" height="185" rx="16" fill="#F7F4EC" stroke="#14213D" stroke-opacity="0.25" stroke-width="1"/>
-        <text x="50" y="313" font-family="'Archivo',sans-serif" font-size="14" font-weight="600" fill="#14213D">Camada local · na rede da Oficial — nenhuma porta de entrada</text>
-        <g>
-          <rect x="50" y="330" width="180" height="66" rx="10" fill="#FCFBF7" stroke="#14213D" stroke-opacity="0.3"/>
-          <text x="140" y="358" text-anchor="middle" font-family="'Archivo',sans-serif" font-weight="600" font-size="14" fill="#14213D">Orquestrador</text>
-          <text x="140" y="378" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#726A58">n8n local</text>
-          <rect x="250" y="330" width="180" height="66" rx="10" fill="#FCFBF7" stroke="#14213D" stroke-opacity="0.3"/>
-          <text x="340" y="358" text-anchor="middle" font-family="'Archivo',sans-serif" font-weight="600" font-size="14" fill="#14213D">Modelo local</text>
-          <text x="340" y="378" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#726A58">triagem · extração</text>
-          <rect x="450" y="330" width="180" height="66" rx="10" fill="#14213D"/>
-          <text x="540" y="358" text-anchor="middle" font-family="'Archivo',sans-serif" font-weight="600" font-size="14" fill="#FCFBF7">Base de processos</text>
-          <text x="540" y="378" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#C6A24A">Postgres cifrado</text>
-        </g>
-        <line x1="230" y1="363" x2="248" y2="363" stroke="#9A7A2E" stroke-width="1.4" marker-end="url(#ar)"/>
-        <line x1="430" y1="363" x2="448" y2="363" stroke="#9A7A2E" stroke-width="1.4" marker-end="url(#ar)"/>
-        <text x="340" y="432" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#726A58">o banco só é lido de dentro — invasão externa não tem caminho até ele</text>
+        <!-- Local Server -->
+        <rect x="450" y="40" width="320" height="200" rx="14" fill="#F7F4EC" stroke="#2E5A44" stroke-width="1.5"/>
+        <text x="610" y="68" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#2E5A44" letter-spacing="1.5">CAMADA LOCAL — SERVIDOR PRIVADO</text>
+        <rect x="480" y="85" width="120" height="40" rx="8" fill="#14213D"/>
+        <text x="540" y="102" text-anchor="middle" font-family="Archivo" font-size="12" fill="#FCFBF7" font-weight="600">PostgreSQL</text>
+        <text x="540" y="117" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#C6A24A">PostGIS · pgvector</text>
+        <rect x="620" y="85" width="120" height="40" rx="8" fill="#14213D"/>
+        <text x="680" y="102" text-anchor="middle" font-family="Archivo" font-size="12" fill="#FCFBF7" font-weight="600">n8n</text>
+        <text x="680" y="117" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#C6A24A">Pipelines</text>
+        <rect x="480" y="140" width="120" height="40" rx="8" fill="#14213D"/>
+        <text x="540" y="157" text-anchor="middle" font-family="Archivo" font-size="12" fill="#FCFBF7" font-weight="600">OSRM</text>
+        <text x="540" y="172" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#C6A24A">Rotas + desvio</text>
+        <rect x="620" y="140" width="120" height="40" rx="8" fill="#14213D"/>
+        <text x="680" y="157" text-anchor="middle" font-family="Archivo" font-size="12" fill="#FCFBF7" font-weight="600">MinIO + API</text>
+        <text x="680" y="172" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#C6A24A">Docs · Gateway</text>
+        <text x="610" y="215" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#726A58">Dados sensíveis e sigilosos · Acesso restrito a usuários autorizados</text>
       </svg>
-      <div class="figcap">Fig. 01 — Fluxo de saída (outbound-only): a base nunca recebe conexão; ela busca trabalho.</div>
+      <div class="figcap">Arquitetura de duas camadas — nuvem para inteligência, local para dados</div>
     </div>
 
-    <div class="grid two">
-      <div class="card">
-        <div class="k">Camada local</div>
-        <h3>A guardiã dos autos</h3>
-        <p>Fica fisicamente na rede da Oficial. Guarda a base de processos, faz a triagem e a extração dos mandados, e conversa com a camada externa apenas por um túnel que ela mesma abre para fora. Não existe porta aberta para dentro — então não há por onde uma invasão entrar.</p>
-      </div>
-      <div class="card">
-        <div class="k">Camada externa</div>
-        <h3>A que fala com o mundo</h3>
-        <p>Roda num VPS e é a única exposta à internet: recebe as mensagens de WhatsApp pelo Hermes e consulta as APIs públicas. Ela nunca tem a chave do banco — recebe só o campo mínimo de cada tarefa (um CEP, um número de processo) e devolve a resposta pela fila.</p>
-      </div>
+    <p>O túnel Tailscale liga as duas camadas. A camada local <strong>inicia a conexão</strong> (outbound) — não há portas abertas para a internet. A VPS nunca tem credenciais do banco de dados. Se alguém comprometer a VPS, os dados da Mari continuam protegidos.</p>
+
+    <div class="note">
+      <strong>Energia ininterrupta.</strong> A camada local roda num mini PC alimentado por um sistema nobreak customizado com bateria LiFePO4 — 4 a 5 horas de autonomia em blackout, muito superior aos 10 minutos de um nobreak comercial. Detalhes na seção de hardware.
     </div>
   </div>
 </section>
 
-<section id="aprende">
+<!-- ═══ 02 — Como a Tina aprende ═══ -->
+<section>
   <div class="wrap">
-    <div class="sechead"><span class="num">02</span><h2>Como a Tina aprende</h2></div>
-    <p class="lede">A Tina não é treinada com os processos da Oficial — isso exporia dados e sairia caríssimo. Ela aprende do jeito certo para dados sensíveis: consultando o acervo na hora, guardando o que funciona e sendo corrigida no uso.</p>
+    <div class="sechead">
+      <div class="num">02 · Aprendizado</div>
+      <h2>Como a Tina aprende</h2>
+    </div>
+    <p>A Tina não é um modelo treinado do zero. Ela é um agente que acumula conhecimento de cinco formas:</p>
 
     <div class="steps">
       <div class="step">
         <div class="sn">01</div>
         <div>
-          <h3>Memória do acervo (RAG local)</h3>
-          <p>Cada mandado, certidão e diligência anterior vira um índice pesquisável dentro do servidor local. Quando a Oficial pergunta "como redigi aquela certidão de não localização em Bangu?", a Tina busca no próprio acervo e responde com base no que já foi feito — sem que nada saia da rede.</p>
+          <h3>Personalidade e base legal</h3>
+          <p>System prompt com a identidade da Tina, tom (sarcasmo + bom humor + seriedade profissional), código de processo civil, código de normas da CGJ-TJRJ, e as fronteiras do cargo — o que ela não faz.</p>
         </div>
       </div>
       <div class="step">
         <div class="sn">02</div>
         <div>
-          <h3>Catálogo de regras do ofício</h3>
-          <p>Fundamentado nos artigos do CPC que regem a função (149, 154, 155, 212, 252‑254, 870, parágrafo único), na Lei Estadual 4.620/2005 e no Código de Normas da CGJ‑TJRJ. Prazos por tipo de ato, janela legal de diligência (dias úteis, 6h às 20h, com as exceções do art. 212, §2º), cautelas, modelos de certidão. Mudou um provimento da Corregedoria? Atualiza‑se a regra, e a Tina aplica na mesma hora — sem re‑treino.</p>
+          <h3>Memória de conversação</h3>
+          <p>Histórico entre a Tina e a Mari, com sincronização entre canais (WhatsApp, Telegram, voz). A Mari pode mudar de canal e a Tina sabe onde parou.</p>
         </div>
       </div>
       <div class="step">
         <div class="sn">03</div>
         <div>
-          <h3>Correção no uso</h3>
-          <p>Quando a Oficial ajusta uma minuta ou reprova uma priorização, a Tina registra o porquê e passa a preferir o padrão certo. O aprendizado é incremental e auditável: dá para ver o que ela aprendeu e reverter se preciso.</p>
+          <h3>Memória persistente</h3>
+          <p>Preferências, padrões e fatos duráveis: como a Mari gosta de roteiro, quais áreas ela evita, atalhos que descobriu. Sobrevive entre sessões.</p>
         </div>
       </div>
       <div class="step">
         <div class="sn">04</div>
         <div>
-          <h3>Diário de bordo estruturado</h3>
-          <p>Cada diligência vira um registro organizado (o que foi feito, onde, quando, com que resultado). Esse diário alimenta as certidões, os relatórios e a própria memória — quanto mais a Tina é usada, mais afiada ela fica no vocabulário e nos padrões daquela Oficial.</p>
+          <h3>Sistema geoespacial</h3>
+          <p>Banco PostGIS com zonas de risco, pontos seguros e referências de endereço. A Tina sabe que tal comunidade é zona VERMELHO antes de a Mari perguntar.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sn">05</div>
+        <div>
+          <h3>Busca multi-engine no acervo</h3>
+          <p>Quando a Mari busca no próprio histórico ("como fiz aquela certidão em Bangu?"), a Tina usa quatro motores no mesmo banco Postgres:</p>
+          <p style="margin-top:8px"><strong>B-tree</strong> (exato, microssegundos) — para número de processo, CPF, data. Nunca erra.<br>
+          <strong>SQL WHERE</strong> (filtrado, milissegundos) — "penhoras em Campo Grande, prazo vencendo".<br>
+          <strong>Full-text GIN</strong> (textual) — "certidão de não localização com réu oculto".<br>
+          <strong>pgvector</strong> (semântico, para ~3% das buscas) — "casos parecidos com este". Embeddings não têm precisão para números de processo — por isso 97% das buscas não usam vetorial.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="comunica">
+<!-- ═══ 03 — Sistema Geoespacial de Segurança ═══ -->
+<section>
   <div class="wrap">
-    <div class="sechead"><span class="num">03</span><h2>Como a Tina se comunica — texto e áudio</h2></div>
-    <p class="lede">No gabinete, texto. Em campo, com as mãos ocupadas e o carro em movimento, voz. A Oficial dita a ocorrência da diligência e ouve a resposta; a Tina cuida de transformar fala em texto estruturado e texto em fala natural.</p>
+    <div class="sechead">
+      <div class="num">03 · Segurança geoespacial</div>
+      <h2>O mapa que protege</h2>
+    </div>
+    <p>Antes de cada saída, a Tina cruza o endereço do mandado com o mapa de risco. Não é um palpite — é um banco PostGIS com polígonos geográficos, atualizado pela própria Mari no campo.</p>
 
-    <div class="figure">
-      <svg viewBox="0 0 680 150" role="img" aria-label="Pipeline de voz da Tina">
-        <defs>
-          <marker id="ar2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-            <path d="M2 1L8 5L2 9" fill="none" stroke="#9A7A2E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-          </marker>
-        </defs>
-        <g font-family="'Archivo',sans-serif">
-          <rect x="20" y="45" width="112" height="60" rx="10" fill="#FCFBF7" stroke="#14213D" stroke-opacity="0.3"/>
-          <text x="76" y="72" text-anchor="middle" font-size="13" font-weight="600" fill="#14213D">Voz da</text>
-          <text x="76" y="90" text-anchor="middle" font-size="13" font-weight="600" fill="#14213D">Oficial</text>
-
-          <rect x="164" y="45" width="120" height="60" rx="10" fill="#2B3C5D"/>
-          <text x="224" y="70" text-anchor="middle" font-size="13" font-weight="600" fill="#FCFBF7">OpenAI</text>
-          <text x="224" y="88" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#C6A24A">fala → texto</text>
-
-          <rect x="316" y="45" width="120" height="60" rx="10" fill="#14213D"/>
-          <text x="376" y="70" text-anchor="middle" font-size="13" font-weight="600" fill="#FCFBF7">Claude</text>
-          <text x="376" y="88" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#C6A24A">raciocínio</text>
-
-          <rect x="468" y="45" width="120" height="60" rx="10" fill="#9A7A2E"/>
-          <text x="528" y="70" text-anchor="middle" font-size="13" font-weight="600" fill="#FCFBF7">ElevenLabs</text>
-          <text x="528" y="88" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#F7F4EC">texto → fala</text>
-
-          <rect x="600" y="45" width="60" height="60" rx="10" fill="#FCFBF7" stroke="#14213D" stroke-opacity="0.3"/>
-          <text x="630" y="80" text-anchor="middle" font-size="13" font-weight="600" fill="#14213D">Áudio</text>
-        </g>
-        <line x1="132" y1="75" x2="162" y2="75" stroke="#9A7A2E" stroke-width="1.4" marker-end="url(#ar2)"/>
-        <line x1="284" y1="75" x2="314" y2="75" stroke="#9A7A2E" stroke-width="1.4" marker-end="url(#ar2)"/>
-        <line x1="436" y1="75" x2="466" y2="75" stroke="#9A7A2E" stroke-width="1.4" marker-end="url(#ar2)"/>
-        <line x1="588" y1="75" x2="598" y2="75" stroke="#9A7A2E" stroke-width="1.4" marker-end="url(#ar2)"/>
-      </svg>
-      <div class="figcap">Fig. 02 — Pipeline de voz: OpenAI transcreve · Claude pensa e responde · ElevenLabs dá voz.</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="k">Nível crítico</div>
+        <h3><span class="riskbadge risk-red">VERMELHO</span></h3>
+        <p>Não entrar sem escolta policial. Bloqueia automaticamente a rota do dia. A Tina não inclui o endereço no roteiro até a Mari confirmar apoio.</p>
+      </div>
+      <div class="card">
+        <div class="k">Nível de cautela</div>
+        <h3><span class="riskbadge risk-orange">LARANJA</span></h3>
+        <p>Cautela extrema. A Tina inclui na rota com alerta, notifica a DP responsável, e sugere horário de menor circulação.</p>
+      </div>
+      <div class="card">
+        <div class="k">Nível de atenção</div>
+        <h3><span class="riskbadge risk-yellow">AMARELO</span></h3>
+        <p>Atenção redobrada. Segue na rota com nota. A Tina destaca no roteiro do dia, mas não bloqueia.</p>
+      </div>
     </div>
 
-    <div class="grid three">
+    <div class="tablewrap" style="margin-top:28px">
+      <table>
+        <thead><tr><th>Região</th><th>Zonas mapeadas</th><th>Nível predominante</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Campo Grande</strong></td><td>Cosmos, Vila Kosmos, Retiro, Paciência</td><td><span class="riskbadge risk-red">VERMELHO</span></td></tr>
+          <tr><td><strong>Santa Cruz</strong></td><td>Retiro, Paciência</td><td><span class="riskbadge risk-red">VERMELHO</span></td></tr>
+          <tr><td><strong>Bangu</strong></td><td>Chatuba, Jardim Aurora, Quiririm, Serra da Piedade, Concordia</td><td><span class="riskbadge risk-orange">LARANJA</span></td></tr>
+          <tr><td><strong>Mesquita</strong></td><td>Chatuba, Rochuela, Vila Emil</td><td><span class="riskbadge risk-orange">LARANJA</span></td></tr>
+          <tr><td><strong>Nova Iguaçu</strong></td><td>Mariana, Austin, Batán</td><td><span class="riskbadge risk-orange">LARANJA</span></td></tr>
+          <tr><td><strong>Duque de Caxias</strong></td><td>Vila São José</td><td><span class="riskbadge risk-red">VERMELHO</span></td></tr>
+          <tr><td><strong>Zona Norte</strong></td><td>Jacarezinho, Manguinhos, Maré, Alemão</td><td><span class="riskbadge risk-red">VERMELHO</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:12px;font-size:14px;color:var(--muted)">20 zonas seed cadastradas · 16 pontos seguros (delegacias, UPAs, bombeiros) · Sistema expansível para qualquer comarca do estado</p>
+
+    <div class="figure">
+      <svg viewBox="0 0 800 200" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="70" width="130" height="50" rx="10" fill="#F7F4EC" stroke="#9A7A2E" stroke-width="1.5"/>
+        <text x="85" y="92" text-anchor="middle" font-family="Archivo" font-size="13" fill="#14213D" font-weight="600">Mandado</text>
+        <text x="85" y="108" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#9A7A2E">Endereço bruto</text>
+        <path d="M150 95 L195 95" stroke="#9A7A2E" stroke-width="1.5" marker-end="url(#arr)"/>
+        <rect x="200" y="70" width="130" height="50" rx="10" fill="#F7F4EC" stroke="#9A7A2E" stroke-width="1.5"/>
+        <text x="265" y="92" text-anchor="middle" font-family="Archivo" font-size="13" fill="#14213D" font-weight="600">Geocode</text>
+        <text x="265" y="108" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#9A7A2E">Coordenadas GPS</text>
+        <path d="M330 95 L375 95" stroke="#9A7A2E" stroke-width="1.5" marker-end="url(#arr)"/>
+        <rect x="380" y="60" width="140" height="70" rx="10" fill="#14213D"/>
+        <text x="450" y="85" text-anchor="middle" font-family="Archivo" font-size="13" fill="#FCFBF7" font-weight="600">PostGIS</text>
+        <text x="450" y="100" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#C6A24A">Cruzar com zonas</text>
+        <text x="450" y="113" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#C6A24A">de risco</text>
+        <path d="M520 95 L565 95" stroke="#9A7A2E" stroke-width="1.5" marker-end="url(#arr)"/>
+        <rect x="570" y="50" width="210" height="90" rx="10" fill="#F7F4EC" stroke="#2E5A44" stroke-width="1.5"/>
+        <text x="675" y="72" text-anchor="middle" font-family="Archivo" font-size="13" fill="#14213D" font-weight="600">Alerta + Roteiro</text>
+        <text x="675" y="90" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#C0392B">VERMELHO → bloqueia</text>
+        <text x="675" y="103" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#E67E22">LARANJA → cautela + DP</text>
+        <text x="675" y="116" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#B7950B">AMARELO → segue com nota</text>
+        <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#9A7A2E"/></marker></defs>
+      </svg>
+      <div class="figcap">Pipeline: mandado → geocode → cruzamento PostGIS → alerta/roteiro</div>
+    </div>
+
+    <p>A Mari cadastra zonas de risco de quatro formas: <strong>por voz no campo</strong> (GPS do celular marca o centro da área), <strong>por texto no gabinete</strong> ("marca Cosmos como vermelho"), <strong>desenhando no mapa</strong> (para revisão de contornos), ou <strong>importando YAML em lote</strong> (para expansão para novas comarcas).</p>
+  </div>
+</section>
+
+<!-- ═══ 04 — Alerta de Tiroteio ═══ -->
+<section>
+  <div class="wrap">
+    <div class="sechead">
+      <div class="num">04 · Monitor de tiroteio</div>
+      <h2>Silêncio é segurança</h2>
+    </div>
+    <p>A Tina monitora tiroteios em tempo real, 24 horas por dia, nas áreas de atuação da Mari. Duas fontes independentes se complementam: uma oficial e geolocalizada, outra em tempo real via redes sociais.</p>
+
+    <div class="grid2">
       <div class="card">
-        <div class="k">Escuta</div>
-        <h3>OpenAI (fala → texto)</h3>
-        <p>O áudio da Oficial vira texto limpo, com bom desempenho em português e ruído de rua. É o que permite ditar uma ocorrência inteira sem digitar uma linha.</p>
+        <div class="k">Fonte primária · Construído</div>
+        <h3>Fogo Cruzado API</h3>
+        <p>API REST oficial do projeto Fogo Cruzado. Eventos geolocalizados, verificados, com data, hora, vítimas e operação policial. Gratuita e confiável.</p>
       </div>
       <div class="card">
-        <div class="k">Pensa</div>
-        <h3>Claude (o raciocínio)</h3>
-        <p>Entende o pedido, cruza com o acervo e as regras, decide se precisa de busca externa e formula a resposta — em linguagem de gabinete, não de robô.</p>
+        <div class="k">Fonte complementar · Construído</div>
+        <h3>7 perfis do X via Nitter</h3>
+        <p>Scraping de perfis que reportam tiros em tempo real no Rio: @fogocruzadoapp, @blogdolucca, @raoplog, @G1_RJ, @extravasa_rj, @RioPolice, @transitorj. Via Nitter self-hosted — custo zero.</p>
       </div>
-      <div class="card">
-        <div class="k">Fala</div>
-        <h3>ElevenLabs (texto → fala)</h3>
-        <p>A resposta vira voz natural em português, para a Oficial ouvir dirigindo ou entre uma diligência e outra, sem tirar os olhos do caminho.</p>
+    </div>
+
+    <div class="figure">
+      <svg viewBox="0 0 800 240" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="30" width="150" height="50" rx="10" fill="#14213D"/>
+        <text x="95" y="52" text-anchor="middle" font-family="Archivo" font-size="12" fill="#FCFBF7" font-weight="600">Fogo Cruzado</text>
+        <text x="95" y="66" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#C6A24A">API oficial</text>
+        <rect x="20" y="100" width="150" height="50" rx="10" fill="#14213D"/>
+        <text x="95" y="122" text-anchor="middle" font-family="Archivo" font-size="12" fill="#FCFBF7" font-weight="600">Nitter (7 perfis)</text>
+        <text x="95" y="136" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#C6A24A">Scraping RSS</text>
+        <path d="M170 55 Q220 55 250 80" fill="none" stroke="#9A7A2E" stroke-width="1.5"/>
+        <path d="M170 125 Q220 125 250 100" fill="none" stroke="#9A7A2E" stroke-width="1.5"/>
+        <rect x="250" y="65" width="150" height="50" rx="10" fill="#F7F4EC" stroke="#9A7A2E" stroke-width="1.5"/>
+        <text x="325" y="87" text-anchor="middle" font-family="Archivo" font-size="12" fill="#14213D" font-weight="600">Filtro por área</text>
+        <text x="325" y="101" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#9A7A2E">Campo Grande + Sta Cruz</text>
+        <path d="M400 90 L445 90" stroke="#9A7A2E" stroke-width="1.5" marker-end="url(#arr2)"/>
+        <rect x="450" y="65" width="150" height="50" rx="10" fill="#F7F4EC" stroke="#9A7A2E" stroke-width="1.5"/>
+        <text x="525" y="87" text-anchor="middle" font-family="Archivo" font-size="12" fill="#14213D" font-weight="600">Cruzar com zonas</text>
+        <text x="525" y="101" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#9A7A2E">PostGIS raio</text>
+        <path d="M600 90 L645 90" stroke="#9A7A2E" stroke-width="1.5" marker-end="url(#arr2)"/>
+        <rect x="650" y="55" width="140" height="70" rx="10" fill="#14213D"/>
+        <text x="720" y="78" text-anchor="middle" font-family="Archivo" font-size="12" fill="#FCFBF7" font-weight="600">Alerta</text>
+        <text x="720" y="94" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="#C0392B">CRÍTICO < 500m</text>
+        <text x="720" y="106" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="#E67E22">ALTO < 1km</text>
+        <text x="720" y="118" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="#B7950B">INFO > 1km</text>
+        <text x="400" y="185" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#726A58">Varredura automática horária (cron) → Telegram</text>
+        <text x="400" y="205" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#726A58">Check sob demanda: "Tina, tem tiro na área?"</text>
+        <text x="400" y="225" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#726A58">Eventos expiram em 6 horas · Silêncio = segurança</text>
+        <defs><marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#9A7A2E"/></marker></defs>
+      </svg>
+      <div class="figcap">Pipeline do monitor de tiroteio — coleta → filtro → cruzamento → alerta</div>
+    </div>
+
+    <div class="note">
+      <strong>Princípio do silêncio.</strong> A Tina só fala quando há perigo real. Se a varredura horária não encontra eventos relevantes, ela não envia nada. A ausência de mensagem significa "área tranquila". Quando há alerta, ele chega automaticamente no Telegram da Mari.
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 05 — Como se comunica ═══ -->
+<section>
+  <div class="wrap">
+    <div class="sechead">
+      <div class="num">05 · Comunicação</div>
+      <h2>Como a Tina fala</h2>
+    </div>
+    <p>A Mari trabalha em dois ritmos completamente diferentes. A Tina se adapta a cada um.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="sn">→</div>
+        <div>
+          <h3>No gabinete — texto detalhado</h3>
+          <p>A Mari está sentada, com tempo. A Tina responde com listas, tabelas, referências completas. Pode ser mais longa e estruturada — é o momento de planejar, revisar, organizar.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sn">→</div>
+        <div>
+          <h3>Em campo — voz curta e direta</h3>
+          <p>A Mari está dirigindo ou andando. Respostas de no máximo 2-3 frases. Se a resposta for complexa: "Mari, te mando por texto depois. Resumindo: [uma frase]." Para alertas de segurança: direto e imperativo. "MARI, PARE. Tiroteio em Cosmos, a 300m."</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sn">→</div>
+        <div>
+          <h3>Tom — sarcasmo, bom humor e seriedade</h3>
+          <p>A Tina usa sarcasmo leve para aliviar momentos tensos (mandado com endereço errado, sistema do tribunal fora do ar). Mas quando o assunto é segurança, prazos ou fé pública: técnica, precisa, sem enfeites. O humor nunca aparece numa situação de risco.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sn">→</div>
+        <div>
+          <h3>Mariana e Mari</h3>
+          <p>"Mariana" no profissional, na maioria das situações. "Mari" quando a Tina quer ser mais carinhosa ou aliviar um momento tenso. A alternância é natural — é um instrumento de sintonia, não uma regra rígida.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="tarefas">
+<!-- ═══ 06 — O que faz pelo trabalho ═══ -->
+<section>
   <div class="wrap">
-    <div class="sechead"><span class="num">04</span><h2>O que a Tina faz pelo trabalho</h2></div>
-    <p class="lede">As oito dificuldades típicas do ofício — localização, risco, prazos, responsabilidade jurídica, realidade divergente do mandado, logística, sistemas e desgaste emocional — não são todas do mesmo tipo. Cada uma pede uma resposta diferente, e a Tina só entra onde ela pode ajudar de verdade.</p>
-
-    <div class="grid three" style="margin-top:34px">
-      <div class="card" style="border-color:var(--forest)">
-        <div class="k" style="color:var(--forest)">A Tina mitiga</div>
-        <h3>Localização · prazos · logística · sistemas</h3>
-        <p>Endereço impreciso, prazo apertado, roteiro do dia, devolução no sistema. É exatamente o tipo de trabalho braçal e repetitivo que uma assistente resolve — liberando tempo de campo.</p>
-      </div>
-      <div class="card" style="border-color:var(--ink-soft)">
-        <div class="k" style="color:var(--ink-soft)">Só a instituição resolve</div>
-        <h3>Risco físico · responsabilidade jurídica</h3>
-        <p>Área de conflito, resistência, nulidade por citação inválida. A Tina pode sinalizar risco conhecido antes da saída, mas apoio policial, chaveiro e a decisão de interromper a diligência são sempre institucionais.</p>
-      </div>
-      <div class="card" style="border-color:var(--gold)">
-        <div class="k" style="color:var(--gold)">É do ofício</div>
-        <h3>Discernimento · desgaste emocional</h3>
-        <p>Bens de terceiros, pessoa vulnerável, imóvel fechado, contato com conflito e perda. Exige presença humana, sensibilidade e a autoridade de quem está ali — nada disso se terceiriza.</p>
-      </div>
+    <div class="sechead">
+      <div class="num">06 · Capacidades</div>
+      <h2>O que a Tina faz pelo trabalho</h2>
     </div>
-
-    <div class="grid two" style="margin-top:44px">
+    <div class="grid2">
       <div class="card">
-        <div class="k">Fila de mandados</div>
-        <h3>Triagem e prioridade</h3>
-        <p>Lê a carga vinda da Central de Cumprimento de Mandados, extrai partes, endereço, tipo de ato, prazo e valor, e organiza a fila por prioridade legal — medida protetiva (Lei Maria da Penha), réu preso, idoso — antes de urgência genérica e proximidade.</p>
-      </div>
-      <div class="card">
-        <div class="k">Prazos</div>
-        <h3>Relógio de cumprimento</h3>
-        <p>Calcula o prazo de cada mandado a partir da data de recebimento e do tipo de ato, respeitando a janela legal de diligência (art. 212, CPC — dias úteis, 6h às 20h, salvo autorização), e avisa com antecedência o que está apertando.</p>
+        <div class="k">Planejamento</div>
+        <h3>Roteirização do dia</h3>
+        <p>Agrupa mandados por área, calcula a melhor rota com OSRM, identifica DP mais próxima de cada parada, e bloqueia endereços em zona VERMELHO até confirmação.</p>
       </div>
       <div class="card">
         <div class="k">Campo</div>
-        <h3>Roteiro do dia</h3>
-        <p>Agrupa as diligências por região e monta a melhor sequência de visitas, economizando combustível e horas de deslocamento numa cidade do tamanho do Rio.</p>
+        <h3>Enriquecimento de endereço</h3>
+        <p>Antes de cada saída: geocodifica, busca pontos de referência comerciais, cruza com zonas de risco, e alerta discrepâncias de bairro entre o mandado e o GPS.</p>
       </div>
       <div class="card">
-        <div class="k">Endereços</div>
-        <h3>Validação e complemento</h3>
-        <p>Confere CEP, completa bairro e logradouro e sinaliza endereço incompleto, irregular ou desatualizado antes de a Oficial sair — menos viagem perdida, o problema nº 1 relatado pela categoria.</p>
+        <div class="k">Segurança</div>
+        <h3>Mapa de risco geoespacial</h3>
+        <p>20 zonas de risco mapeadas em três níveis. 16 pontos seguros cadastrados. Cadastro por voz no campo. Sistema expansível para novas comarcas via YAML.</p>
+        <span class="check">✓ Construído</span>
       </div>
       <div class="card">
-        <div class="k">Documentos</div>
+        <div class="k">Segurança</div>
+        <h3>Alerta de tiroteio em tempo real</h3>
+        <p>Monitoramento 24/7 com Fogo Cruzado API e 7 perfis do X. Varredura horária automática com entrega no Telegram. Check sob demanda por voz ou texto.</p>
+        <span class="check">✓ Construído</span>
+      </div>
+      <div class="card">
+        <div class="k">Gabinete</div>
         <h3>Minutas de certidão</h3>
-        <p>Redige rascunhos de certidão (positiva, negativa, de não localização, de diligência) e reconhece quando o caso pede citação por hora certa (arts. 252‑254, CPC) — sempre a partir do que a Oficial presenciou e ditou. A fé pública e a assinatura continuam sendo dela.</p>
+        <p>A Mari dita o que presenciou. A Tina estrutura em minuta de certidão, usando o formato correto do CPC e do Código de Normas. A assinatura e a fé pública são sempre da Mari.</p>
       </div>
       <div class="card">
-        <div class="k">Contexto</div>
-        <h3>Consulta processual</h3>
-        <p>Puxa andamento e capa do processo em bases públicas para dar contexto rápido a um mandado — sem a Oficial precisar abrir cada sistema à mão.</p>
+        <div class="k">Gabinete</div>
+        <h3>Busca no acervo histórico</h3>
+        <p>Quatro motores no mesmo banco: B-tree (exato), SQL WHERE (filtrado), Full-text (textual) e pgvector (semântico). 97% das buscas são exatas ou textuais — não precisam de vetorial.</p>
       </div>
       <div class="card">
-        <div class="k">Cautelas</div>
-        <h3>Checklists por ato</h3>
-        <p>Para cada tipo de diligência (penhora, arresto, busca e apreensão, despejo, reintegração), lembra o que levar e as cautelas — inclusive quando o ato exige avaliação técnica especializada (art. 870, parágrafo único, CPC) fora da alçada da Oficial.</p>
+        <div class="k">Campo</div>
+        <h3>Diário de bordo por voz</h3>
+        <p>"Anota aí: réu não localizado, vizinho disse que mudou." A Tina registra, geolocaliza, e arquiva. Depois estrutura em minuta quando a Mari pedir.</p>
       </div>
       <div class="card">
-        <div class="k">Registro</div>
-        <h3>Diário e relatórios</h3>
-        <p>Transforma o que a Oficial dita em campo num registro estruturado por processo — local, data, hora, tentativas, resultado — que vira certidão e alimenta relatórios de produtividade quase sem esforço.</p>
+        <div class="k">Gabinete</div>
+        <h3>Prazos e lembretes</h3>
+        <p>Calcula prazos processuais conforme CPC, provimentos da CGJ e feriados forenses. Avisa antes do vencimento, não depois.</p>
+      </div>
+      <div class="card">
+        <div class="k">Continuidade</div>
+        <h3>Sincronização entre canais</h3>
+        <p>A Mari começa no WhatsApp, continua no Telegram, termina por voz. A Tina mantém o contexto em todos. Skill session-memory sincroniza entre canais ativos.</p>
+      </div>
+      <div class="card">
+        <div class="k">Campo</div>
+        <h3>Auto-diagnóstico</h3>
+        <p>A Tina sabe dizer o que falta: "ainda não tenho a API do Google Places configurada" ou "o túnel pode estar fora". Nunca finge que algo funciona quando não funciona.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="apis">
+<!-- ═══ 07 — APIs externas ═══ -->
+<section>
   <div class="wrap">
-    <div class="sechead"><span class="num">05</span><h2>APIs externas que aceleram o trabalho</h2></div>
-    <p class="lede">Todas acessadas apenas pela camada externa, com o dado mínimo. As públicas são gratuitas; as pagas custam centavos por consulta. Custos em dólar (moeda de cobrança) com equivalente aproximado em real ao câmbio de agosto/2026 (≈ R$ 5,10).</p>
-
+    <div class="sechead">
+      <div class="num">07 · Integrações</div>
+      <h2>APIs externas</h2>
+    </div>
     <div class="tablewrap">
       <table>
-        <thead>
-          <tr><th style="width:26%">API</th><th>Para que serve</th><th style="width:26%">Custo</th></tr>
-        </thead>
+        <thead><tr><th>Integração</th><th>Camada</th><th>Custo</th><th>Status</th></tr></thead>
         <tbody>
-          <tr>
-            <td><strong>DataJud (CNJ)</strong></td>
-            <td class="app">Metadados e movimentações de processos públicos de todos os tribunais, por número único. Contexto rápido de qualquer mandado.</td>
-            <td><span class="cost free">Gratuita</span><br><span class="cost free">chave pública</span></td>
-          </tr>
-          <tr>
-            <td><strong>ViaCEP / BrasilAPI</strong></td>
-            <td class="app">CEP → logradouro, bairro e cidade. Validar e completar endereços de diligência antes de ir a campo.</td>
-            <td><span class="cost free">Gratuita</span></td>
-          </tr>
-          <tr>
-            <td><strong>Receita / CNPJ</strong><br><span class="cost">(BrasilAPI · CNPJá)</span></td>
-            <td class="app">Situação cadastral e endereço de sede de réu pessoa jurídica. Qualificar a parte e achar onde citar.</td>
-            <td><span class="cost free">Grátis a baixo custo</span></td>
-          </tr>
-          <tr>
-            <td><strong>Geocodificação</strong><br><span class="cost">(Google Maps)</span></td>
-            <td class="app">Endereço → coordenadas, para plotar as diligências no mapa e agrupar por região.</td>
-            <td><span class="cost paid">US$ 5 / 1.000</span><br><span class="cost">10 mil grátis/mês</span></td>
-          </tr>
-          <tr>
-            <td><strong>Rotas</strong><br><span class="cost">(Google Routes)</span></td>
-            <td class="app">Melhor sequência de visitas do dia, com trânsito. Alternativa gratuita: OSRM auto-hospedado.</td>
-            <td><span class="cost paid">≈ US$ 5 / 1.000</span></td>
-          </tr>
-          <tr>
-            <td><strong>Correios</strong><br><span class="cost">(via BrasilAPI)</span></td>
-            <td class="app">Consulta de CEP e apoio a endereçamento. Reforça a validação antes da diligência.</td>
-            <td><span class="cost free">Gratuita</span></td>
-          </tr>
-          <tr>
-            <td><strong>Enriquecimento de pessoas</strong><br><span class="cost">(BigDataCorp · Assertiva · Serpro)</span></td>
-            <td class="app">Endereço atualizado de pessoa física. <strong>Opcional e sensível:</strong> exige contrato e base legal na LGPD. Em regra, a Oficial já localiza por canais oficiais credenciados (SISBAJUD, RENAJUD, INFOJUD, SNIPER).</td>
-            <td><span class="cost paid">Pago por consulta</span><br><span class="cost">sob contrato</span></td>
-          </tr>
+          <tr><td><strong>Fogo Cruzado API</strong></td><td>Externa</td><td class="cost free">Grátis</td><td>✅ Construído</td></tr>
+          <tr><td><strong>Perfis do X</strong> (via Nitter self-hosted)</td><td>Externa</td><td class="cost free">Grátis</td><td>✅ Construído</td></tr>
+          <tr><td><strong>DataJud</strong> (CNJ)</td><td>Externa</td><td class="cost free">Grátis</td><td>🔜 A conectar</td></tr>
+          <tr><td><strong>ViaCEP</strong></td><td>Externa</td><td class="cost free">Grátis</td><td>🔜 A conectar</td></tr>
+          <tr><td><strong>BrasilAPI</strong></td><td>Externa</td><td class="cost free">Grátis</td><td>🔜 A conectar</td></tr>
+          <tr><td><strong>Google Places</strong></td><td>Externa</td><td class="cost paid">~US$ 0-15/mês</td><td>🔜 A conectar</td></tr>
+          <tr><td><strong>Google Geocoding</strong></td><td>Externa</td><td class="cost paid">10k grátis/mês</td><td>🔜 A conectar</td></tr>
+          <tr><td><strong>Google Street View</strong></td><td>Externa</td><td class="cost paid">1k grátis/mês</td><td>🔜 A conectar</td></tr>
+          <tr><td><strong>OSRM</strong> (rotas + desvio de zonas)</td><td>Local</td><td class="cost free">Grátis (self-hosted)</td><td>🔜 A instalar</td></tr>
+          <tr><td><strong>Nominatim</strong> (geocoding local)</td><td>Local</td><td class="cost free">Grátis (self-hosted)</td><td>🔜 A instalar</td></tr>
         </tbody>
       </table>
     </div>
-    <div class="note"><strong>Regra de ouro do sigilo:</strong> a Tina consulta essas APIs mandando só o mínimo — um CEP, um número de processo, um endereço solto — nunca o processo inteiro. O que identifica as partes fica na camada local.</div>
-    <div class="note" style="margin-top:16px"><strong>De onde vem a carga:</strong> no TJRJ, os mandados chegam pela Central de Cumprimento de Mandados da comarca. A fila que a Tina organiza já nasce lá — o papel dela é ler essa carga e reordená‑la pelas prioridades legais nomeadas (medida protetiva, réu preso, idoso), não substituir a distribuição institucional.</div>
+    <div class="note">
+      <strong>Regra de ouro.</strong> A Tina envia para APIs externas apenas o mínimo necessário — um CEP, um endereço solto, um número de processo. Nunca o processo inteiro com dados de partes. O que identifica réus, testemunhas e endereços residenciais fica na camada local, cifrado.
+    </div>
   </div>
 </section>
 
-<section id="custos">
+<!-- ═══ 08 — Quanto custa ═══ -->
+<section>
   <div class="wrap">
-    <div class="sechead"><span class="num">06</span><h2>Quanto custa</h2></div>
-    <p class="lede">Três serviços pagos por uso, sem mensalidade obrigatória: o cérebro (Claude), a escuta (OpenAI) e a voz (ElevenLabs). Você paga pelo que usar. Abaixo, as tarifas e depois um cenário realista de uma Oficial com uso moderado-intenso (≈ 22 dias úteis/mês).</p>
-
-    <div class="grid three">
-      <div class="card">
-        <div class="k">Cérebro · Claude</div>
-        <h3>Por milhão de tokens</h3>
-        <p><strong>Opus 4.8</strong> — US$ 5 / US$ 25 (entrada/saída)<br>
-        <strong>Sonnet 5</strong> — US$ 2 / US$ 10 (introdutório até 31/08/2026)<br>
-        <strong>Haiku 4.5</strong> — US$ 1 / US$ 5<br>
-        <span style="color:var(--muted);font-size:14px">Cache de contexto: leitura a 10% da entrada · lote: −50%</span></p>
-      </div>
-      <div class="card">
-        <div class="k">Escuta · OpenAI</div>
-        <h3>Por minuto de áudio</h3>
-        <p><strong>gpt-4o-transcribe</strong> — US$ 0,006/min (≈ US$ 0,36/hora)<br>
-        <strong>mini</strong> — US$ 0,003/min<br>
-        <span style="color:var(--muted);font-size:14px">Uma diligência ditada de 1 minuto custa menos de 1 centavo de dólar.</span></p>
-      </div>
-      <div class="card">
-        <div class="k">Voz · ElevenLabs</div>
-        <h3>Por caractere</h3>
-        <p><strong>Flash / Turbo</strong> — ≈ US$ 0,05 / 1.000 caracteres<br>
-        <strong>Multilingual v2</strong> — ≈ US$ 0,10 / 1.000<br>
-        <span style="color:var(--muted);font-size:14px">Planos: Starter US$ 5 · Creator US$ 22 (100k) · Pro US$ 99 (500k).</span></p>
-      </div>
+    <div class="sechead">
+      <div class="num">08 · Custos</div>
+      <h2>Quanto custa rodar a Tina</h2>
     </div>
-
-    <h3 style="margin-top:44px;font-size:18px;font-family:'IBM Plex Mono',monospace;letter-spacing:0.08em;color:var(--gold);text-transform:uppercase;font-weight:500">Cenário — 1 Oficial, uso moderado-intenso</h3>
-    <div class="tablewrap" style="margin-top:16px">
-      <table>
-        <thead><tr><th>Componente</th><th>Uso estimado no mês</th><th style="width:24%">Custo/mês</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Claude</strong> (cérebro)</td><td class="app">~1.300 turnos de conversa + ~300 extrações de mandado, mix Sonnet+Haiku e Opus pontual, com cache do catálogo de regras</td><td><span class="cost paid">US$ 45 – 65</span></td></tr>
-          <tr><td><strong>OpenAI</strong> (escuta)</td><td class="app">~440 min de áudio ditado (≈ 20 min/dia)</td><td><span class="cost paid">≈ US$ 3</span></td></tr>
-          <tr><td><strong>ElevenLabs</strong> (voz)</td><td class="app">~440 mil caracteres falados (respostas em áudio)</td><td><span class="cost paid">US$ 22 – 44</span></td></tr>
-          <tr><td><strong>APIs públicas</strong></td><td class="app">DataJud, ViaCEP, BrasilAPI — consulta ilimitada</td><td><span class="cost free">US$ 0</span></td></tr>
-          <tr><td><strong>Geocoding / rotas</strong></td><td class="app">Dentro ou perto do free tier (ou OSRM próprio)</td><td><span class="cost paid">US$ 0 – 15</span></td></tr>
-          <tr><td><strong>VPS</strong> (camada externa)</td><td class="app">1 instância rodando Hermes + agente externo</td><td><span class="cost paid">US$ 20 – 40</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="costgrid" style="margin-top:20px">
+    <p>O custo mensal de operação da Tina é quase todo na inteligência — o modelo de linguagem que conversa com a Mari. Tudo o mais é open-source e self-hosted.</p>
+    <div class="costgrid">
       <div class="costcell">
-        <div class="lab">Operação/mês</div>
-        <div class="big">US$ 90 – 170</div>
-        <div class="sub">tudo somado, por uso</div>
+        <div class="lab">Cérebro (LLM)</div>
+        <div class="big">US$ 50-100</div>
+        <div class="sub">Claude API · ~1.300 turnos/mês</div>
       </div>
       <div class="costcell">
-        <div class="lab">Em reais (≈R$ 5,10)</div>
-        <div class="big">R$ 460 – 870</div>
-        <div class="sub">por mês, câmbio ago/2026</div>
+        <div class="lab">Voz (TTS+STT)</div>
+        <div class="big">US$ 10-20</div>
+        <div class="sub">ElevenLabs + Whisper</div>
+      </div>
+      <div class="costcell">
+        <div class="lab">VPS</div>
+        <div class="big">US$ 12</div>
+        <div class="sub">Hermes + Nitter + APIs</div>
+      </div>
+      <div class="costcell">
+        <div class="lab">Google APIs</div>
+        <div class="big">US$ 0-15</div>
+        <div class="sub">Places + Geocoding (free tier)</div>
+      </div>
+      <div class="costcell">
+        <div class="lab">Nitter</div>
+        <div class="big">US$ 0</div>
+        <div class="sub">Self-hosted · Docker</div>
+      </div>
+      <div class="costcell">
+        <div class="lab">Banco + Mapas</div>
+        <div class="big">US$ 0</div>
+        <div class="sub">Postgres + OSRM local</div>
       </div>
       <div class="costcell total">
-        <div class="lab">Investimento único</div>
-        <div class="big">Servidor local</div>
-        <div class="sub">mini PC/estação com RAM folgada (GPU opcional) para a camada local — compra única, não mensalidade</div>
+        <div class="lab">Total estimado</div>
+        <div class="big">US$ 72-147</div>
+        <div class="sub">Por mês · Tudo incluso</div>
       </div>
     </div>
 
-    <div class="note"><strong>Onde o custo cai:</strong> o cache de contexto do Claude derruba o gasto do catálogo de regras a 10%; usar Haiku para triagem/extração e reservar Opus só para o raciocínio pesado corta boa parte da conta; e trocar Google por OSRM/Nominatim próprios zera geocoding e rotas. Com esses ajustes, o piso do cenário é bem realista.</div>
-  </div>
-</section>
-
-<section id="limites">
-  <div class="wrap">
-    <div class="sechead"><span class="num">07</span><h2>Limites e responsabilidade</h2></div>
-    <p class="lede">A lei traça com precisão o que não pertence à esfera de decisão do Oficial de Justiça. A Tina herda exatamente essa fronteira: onde a Oficial não pode agir por conta própria, a Tina também não age — só prepara o que pode ser revisado.</p>
-
-    <div class="grid two" style="margin-top:34px">
-      <div class="card">
-        <div class="k">Fora do escopo</div>
-        <h3>Mérito e conteúdo da ordem</h3>
-        <p>A Tina nunca sugere qual direito deve prevalecer, nem propõe alterar, reduzir ou ampliar o mandado por conta própria. Ela sinaliza ambiguidade ao juízo — não a resolve.</p>
-      </div>
-      <div class="card">
-        <div class="k">Fora do escopo</div>
-        <h3>Consultoria jurídica e negociação</h3>
-        <p>Não presta parecer, não representa parte, não homologa ou negocia acordo. Na autocomposição, certifica apenas a proposta apresentada — como a lei permite ao Oficial.</p>
-      </div>
-      <div class="card">
-        <div class="k">Fora do escopo</div>
-        <h3>Certificar o não presenciado</h3>
-        <p>Toda minuta parte exclusivamente do que a Oficial presenciou e ditou. A Tina nunca completa, infere ou embeleza um fato que não veio da diligência real.</p>
-      </div>
-      <div class="card">
-        <div class="k">Fora do escopo</div>
-        <h3>Força, risco e investigação</h3>
-        <p>Não decide sobre uso de força, apoio policial ou interrupção de diligência por risco — isso é sempre da Oficial e da instituição. A Tina só carrega o sinal de alerta até ela.</p>
-      </div>
-    </div>
-
-    <div class="caveats" style="margin-top:12px">
-      <div class="caveat"><div class="mk">§</div><p><strong>A Tina assiste, não decide.</strong> Ela prepara minutas, triagens e roteiros; a validade dos atos vem da fé pública da Oficial, que revisa e assina. Nada é oficializado pela Tina.</p></div>
-      <div class="caveat"><div class="mk">§</div><p><strong>Os sistemas oficiais de localização são credenciados.</strong> SISBAJUD, RENAJUD, INFOJUD e SNIPER são acessados pela credencial da servidora, não por API aberta. A Tina organiza o trabalho em volta deles — não os substitui nem burla acesso.</p></div>
-      <div class="caveat"><div class="mk">§</div><p><strong>LGPD é premissa, não detalhe.</strong> A arquitetura local-first existe justamente para manter os dados das partes fora da internet. Qualquer enriquecimento de dados pessoais depende de base legal e contrato — e fica desligado por padrão.</p></div>
-      <div class="caveat"><div class="mk">§</div><p><strong>"Claude Code" é a ferramenta de construção; o cérebro é a API.</strong> Claude Code é o ambiente agêntico usado para <em>montar</em> a Tina. Em produção, o raciocínio roda pelos modelos Claude via API/Agent SDK — é isso que define o custo por token acima.</p></div>
-      <div class="caveat"><div class="mk">§</div><p><strong>DataJud é acervo público.</strong> Dá andamento e capa dos processos públicos — não os autos completos e sigilosos, que continuam nos sistemas do tribunal com acesso credenciado.</p></div>
-    </div>
-
-    <h3 style="margin-top:44px;font-size:18px;font-family:'IBM Plex Mono',monospace;letter-spacing:0.08em;color:var(--gold);text-transform:uppercase;font-weight:500">Glossário rápido</h3>
-    <div class="tablewrap" style="margin-top:16px">
+    <h3 style="margin-top:36px">Hardware — investimento único</h3>
+    <div class="tablewrap">
       <table>
+        <thead><tr><th>Componente</th><th>Especificação</th><th>Investimento</th></tr></thead>
         <tbody>
-          <tr><td style="width:22%"><strong>Contrafé</strong></td><td class="app">Cópia do mandado entregue à parte citada ou intimada, para que tenha ciência do teor do ato.</td></tr>
-          <tr><td><strong>Citação por hora certa</strong></td><td class="app">Procedimento dos arts. 252‑254 do CPC quando há suspeita de que o citando se oculta para não ser encontrado.</td></tr>
-          <tr><td><strong>Penhora × arresto × sequestro</strong></td><td class="app">Penhora recai sobre bem em execução já certa; arresto cautelarmente assegura bem antes de dívida líquida; sequestro recai sobre bem específico disputado na ação.</td></tr>
-          <tr><td><strong>Auto × certidão</strong></td><td class="app">Auto registra um ato executivo específico (ex.: auto de penhora); certidão é o registro geral do que ocorreu na diligência, positivo ou negativo.</td></tr>
+          <tr><td><strong>Mini PC</strong></td><td>Ryzen 5/7, 32GB RAM, 1TB NVMe — sem GPU</td><td>R$ 2.500 - 4.000</td></tr>
+          <tr><td><strong>SSD backup</strong></td><td>1TB SATA (pg_dump cifrado em disco separado)</td><td>R$ 250 - 350</td></tr>
+          <tr><td colspan="3" style="background:var(--paper-2);font-family:'Archivo',sans-serif;font-weight:600;color:var(--ink)">Sistema nobreak customizado LiFePO4</td></tr>
+          <tr><td>Bateria LiFePO4</td><td>12V 15-20Ah com BMS integrado</td><td>R$ 120 - 220</td></tr>
+          <tr><td>Inversor</td><td>1000W onda senoidal pura 12V→110V</td><td>R$ 150 - 250</td></tr>
+          <tr><td>Carregador</td><td>LiFePO4 12V 5-10A (não usar de chumbo)</td><td>R$ 80 - 120</td></tr>
+          <tr><td>Caixa + acessórios</td><td>Fusível 40A, voltímetro, LEDs, conectores Anderson</td><td>R$ 50 - 80</td></tr>
+          <tr><td colspan="2" style="font-weight:600">Total sistema nobreak</td><td><strong>R$ 400 - 670</strong></td></tr>
+          <tr><td colspan="2" style="background:var(--ink);color:var(--paper-2);font-family:'Archivo',sans-serif;font-weight:600">Total hardware (tudo)</td><td style="background:var(--ink);color:var(--white);font-weight:700;font-size:18px">R$ 3.150 - 5.020</td></tr>
         </tbody>
       </table>
     </div>
+
+    <div class="figure">
+      <div class="ups-spec">
+        <div class="ups-item">
+          <div class="k">Topologia</div>
+          <div class="v">Online (double-conversion)</div>
+          <div class="d">Inversor sempre ativo · Zero corte de energia</div>
+        </div>
+        <div class="ups-item">
+          <div class="k">Autonomia</div>
+          <div class="v">3,8 - 5 horas</div>
+          <div class="d">153Wh (15Ah) ÷ 40W = 3,8h · 204Wh (20Ah) ÷ 40W = 5h</div>
+        </div>
+        <div class="ups-item">
+          <div class="k">Vida útil</div>
+          <div class="v">8-10 anos</div>
+          <div class="d">LiFePO4: 2000+ ciclos vs 300 de chumbo-ácido</div>
+        </div>
+        <div class="ups-item">
+          <div class="k">Consumo</div>
+          <div class="v">~40W</div>
+          <div class="d">Mini PC (~30W) + Router (~10W) + inversor (~5W)</div>
+        </div>
+      </div>
+      <div class="figcap">Sistema nobreak customizado LiFePO4 — 4-5h de autonomia vs 10 min de nobreak comercial</div>
+    </div>
+
+    <div class="note">
+      <strong>Por que LiFePO4 e não chumbo-ácido?</strong> Um nobreak comercial usa baterias VRLA que duram 2-3 anos, custam caro para substituir e oferecem apenas 10-15 minutos de autonomia — só dá tempo de desligar. O sistema customizado com LiFePO4 oferece 2000+ ciclos (8-10 anos de vida útil), 4-5 horas de autonomia (o servidor continua rodando durante o blackout) e quando a bateria eventualmente gasta, troca-se apenas a célula por R$ 120-180.
+    </div>
   </div>
 </section>
 
+<!-- ═══ 09 — Limites ═══ -->
+<section>
+  <div class="wrap">
+    <div class="sechead">
+      <div class="num">09 · Fronteiras</div>
+      <h2>O que a Tina não faz</h2>
+    </div>
+    <p>A Tina herda exatamente a fronteira legal do cargo de Oficial de Justiça. Onde a Mari não pode agir por conta própria, a Tina também não age.</p>
+    <div class="steps">
+      <div class="caveat">
+        <div class="mk">§</div>
+        <div><p><strong>Não decide.</strong> Nunca sugere qual direito deve prevalecer, não propõe alterar o mandado, não decide sobre uso de força ou interrupção de diligência por risco. Sinaliza ambiguidade ao juízo — não a resolve.</p></div>
+      </div>
+      <div class="caveat">
+        <div class="mk">§</div>
+        <div><p><strong>Não certifica.</strong> Toda minuta de certidão parte exclusivamente do que a Mari presenciou e ditou. A Tina nunca completa, infere ou embeleza um fato que não veio da diligência real. A fé pública e a assinatura são sempre da Mari.</p></div>
+      </div>
+      <div class="caveat">
+        <div class="mk">§</div>
+        <div><p><strong>Não investiga.</strong> Sistemas oficiais (SISBAJUD, RENAJUD, INFOJUD) são acessados pela credencial da Mari. A Tina organiza o trabalho em volta deles — não os substitui nem burla.</p></div>
+      </div>
+      <div class="caveat">
+        <div class="mk">§</div>
+        <div><p><strong>Não presta consultoria jurídica.</strong> Não emite parecer, não representa parte, não homologa acordo. Na autocomposição, certifica apenas a proposta apresentada.</p></div>
+      </div>
+      <div class="caveat">
+        <div class="mk">§</div>
+        <div><p><strong>Assiste, não decide. Prepara. A validade vem da Mari.</strong></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="wrap">
     <div>
-      <div style="font-family:'Archivo',sans-serif;font-weight:600;color:#FCFBF7;font-size:18px">Tina</div>
-      <div>Assistente de Oficial de Justiça Avaliador · arquitetura, escopo e custos</div>
-      <div style="margin-top:6px;font-size:12.5px;color:#8B92A4">Base legal: CPC (Lei 13.105/2015, arts. 149, 154, 155, 212, 252‑254, 870 §único) · Lei Estadual 4.620/2005 · Código de Normas da CGJ‑TJRJ</div>
+      <div class="eyebrow">Projeto Tina · v3.0 · Agosto 2026</div>
+      <p>Assistente virtual criada por Sergio Castro (engenheiro de IA) para Mariana Loureiro Campos, Oficial de Justiça Avaliadora — TJRJ. Construída com plataforma Hermes Agent + aplicações Next.js (camada web) e PostgreSQL+PostGIS+pgvector, OSRM, Nitter self-hosted (camada local). Duas camadas: cérebro na nuvem, cofre em casa.</p>
     </div>
-    <div class="fmono">TJRJ · v2 · ago/2026 · valores sujeitos a câmbio e a mudanças de tarifa dos provedores</div>
+    <div style="text-align:right">
+      <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold-bright)">Tina assiste.<br>Mariana decide.</p>
+    </div>
   </div>
 </footer>
 
