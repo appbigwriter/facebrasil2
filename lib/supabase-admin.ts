@@ -1,8 +1,8 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
-let client: ReturnType<typeof createClient> | undefined;
+let client: SupabaseClient<any, any, any> | undefined;
 
-export function getSupabaseAdmin() {
+export function getSupabaseAdmin(): SupabaseClient<any, any, any> {
     if (client) return client;
 
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://dummy.supabase.co';
@@ -12,7 +12,12 @@ export function getSupabaseAdmin() {
         console.warn('Supabase URL or Service Role Key is missing. Falling back to dummy values for build.');
     }
 
-    client = createClient(supabaseUrl, supabaseServiceKey, {
+    const schema = process.env.NEXT_PUBLIC_SUPABASE_SCHEMA || 'custom_facebrasil';
+
+    client = createClient<any, any>(supabaseUrl, supabaseServiceKey, {
+        db: {
+            schema: schema as any,
+        },
         auth: {
             autoRefreshToken: false,
             persistSession: false,

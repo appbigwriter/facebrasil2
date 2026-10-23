@@ -42,3 +42,7 @@ next-env.d.ts
 
 # migration data
 /migration/data/
+
+# backups & storage dumps (exceed GitHub file limits)
+supabase/*.zip
+supabase/*.backup.gz

@@ -43,10 +43,14 @@ export async function middleware(request: NextRequest) {
     // ─── 2. Refresh Supabase session and propagate cookies to intlResponse ───
     // We must create a new client that reads FROM the request AND writes TO
     // the intlResponse so session cookies are preserved.
+    const schema = process.env.NEXT_PUBLIC_SUPABASE_SCHEMA || 'custom_facebrasil';
     const supabase = createServerClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL!,
         process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
         {
+            db: {
+                schema: schema,
+            },
             cookies: {
                 get(name: string) {
                     return request.cookies.get(name)?.value
